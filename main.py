@@ -20,11 +20,6 @@ def main():
 def day01():
     print("day 1 - attempt 1")
     f = open("advent-2024-01-input.txt")
-    print("opened file")
-    # print(f.readline())
-    # for x in f:
-    #    print(x)
-    # full_list = [x for x in f]
     left_list = []
     right_list = []
     for x in f:
@@ -35,13 +30,14 @@ def day01():
     left_list.sort()
     right_list.sort()
 
+    total_difference=0
     for x in range(len(left_list)):
-        print(x)
-
-
-    print(left_list)
-    print("done")
-    first_list = []
+        left=int(left_list[x])
+        right=int(right_list[x])
+        total_difference+=abs(left-right)
+        #debug print(total_difference)
+    
+    print(total_difference)
 
     #close file
     f.close()
