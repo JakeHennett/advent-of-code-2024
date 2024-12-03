@@ -18,7 +18,7 @@ def main():
     day01()
 
 def day01():
-    print("day 1")
+    print("day 1 - attempt 1")
 
 if __name__ == "__main__":
     main()
