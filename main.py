@@ -19,6 +19,9 @@ def main():
 
 def day01():
     print("day 1 - attempt 1")
+    f = open("advent-2024-01-input.txt")
+    print("opened file")
+    print(f.readline())
 
 if __name__ == "__main__":
     main()
