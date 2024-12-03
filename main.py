@@ -40,7 +40,8 @@ def day01():
 
 def day01_part2():
     print("Day 01 - Part 2")
-    f = open("advent-2024-01-input-small.txt")
+    #f = open("advent-2024-01-input-small.txt")
+    f = open("advent-2024-01-input.txt")
     left_list = []
     right_list = []
     for x in f:
@@ -55,7 +56,9 @@ def day01_part2():
             if y==x:
                 dupe_count+=1
                 # print(dupe_count)
-        print("There are " + str(dupe_count) + " occurrences of " + x)
+        #print("There are " + str(dupe_count) + " occurrences of " + x)
+        similarity+=(dupe_count * int(x))
+        #print(similarity)
         
     print(similarity)
     f.close
