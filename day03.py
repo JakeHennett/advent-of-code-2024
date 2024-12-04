@@ -51,8 +51,8 @@ def main_day03():
 
 def day03part2():
     print("day 3, part 2")
-    #f = open("advent-2024-03-input.txt")
-    f = open("advent-2024-03-input-small.txt")
+    f = open("advent-2024-03-input.txt")
+    #f = open("advent-2024-03-input-small.txt")
     mul_list=[]
     for x in f:
         #print("x: " + x)
@@ -69,6 +69,9 @@ def day03part2():
             next_do=remaining_string.find("do()")
             next_dont=remaining_string.find("don't()")
             print("mul " + str(next_index) + ", do " + str(next_do) + ", don't " + str(next_dont))
+            if (next_do<0 and next_index>next_dont):
+                print("no more do")
+                next_index=-1
 
         #print("the first occurence of mul begins at: " + str(next_index))
         new_substring=remaining_string
@@ -103,11 +106,15 @@ def day03part2():
                 next_do=new_substring.find("do()")
                 next_dont=new_substring.find("don't()")
                 print("mul " + str(next_index) + ", do " + str(next_do) + ", don't " + str(next_dont))
+                if (next_do<0 and next_index>next_dont):
+                    print("no more do")
+                    next_index=-1
             #print(next_index)
     
+    print(mul_list)
     mul_sum=0
     for x in mul_list:
-        print("mul_list item: " + x)
+        #print("mul_list item: " + x)
         numbers_only=x[4:len(x)-1]
         num_list=numbers_only.split(",")
         #print(numbers_only)
@@ -119,6 +126,7 @@ def day03part2():
         #print(product)
         mul_sum+=product
     print("Sum of all mul operations: " + str(mul_sum))
+    #74822431 too high
 
     #close file
     f.close()
