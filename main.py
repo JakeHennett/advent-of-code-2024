@@ -8,18 +8,14 @@ import argparse
 
 
 def main():
-    parser = argparse.ArgumentParser(description="Description of your script.")
-    # Add arguments here if needed
-    # parser.add_argument('-f', '--file', help='File to process', required=True)
-    args = parser.parse_args()
-
-    # Your main logic here
-    print("hello world")
-    day01()
+    print("Advent of Code 2024")
+    #day01()
+    day01_part2()
 
 def day01():
     print("day 1 - attempt 1")
-    f = open("advent-2024-01-input.txt")
+    #f = open("advent-2024-01-input.txt")
+    f = open("advent-2024-01-input-small.txt")
     left_list = []
     right_list = []
     for x in f:
@@ -41,6 +37,31 @@ def day01():
 
     #close file
     f.close()
+
+def day01_part2():
+    print("Day 01 - Part 2")
+    #f = open("advent-2024-01-input-small.txt")
+    f = open("advent-2024-01-input.txt")
+    left_list = []
+    right_list = []
+    for x in f:
+        one_line = x.split()
+        left_list.append(one_line[0])
+        right_list.append(one_line[1])
+
+    similarity=0
+    for x in left_list:
+        dupe_count=0
+        for y in right_list:
+            if y==x:
+                dupe_count+=1
+                # print(dupe_count)
+        #print("There are " + str(dupe_count) + " occurrences of " + x)
+        similarity+=(dupe_count * int(x))
+        #print(similarity)
+        
+    print(similarity)
+    f.close
 
 if __name__ == "__main__":
     main()
