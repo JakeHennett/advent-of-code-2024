@@ -109,8 +109,8 @@ def day02():
 
 def day02part2():
     print("day 2 part 2")
-    # f = open("advent-2024-02-input.txt")
-    f = open("advent-2024-02-input-small.txt")
+    f = open("advent-2024-02-input.txt")
+    # f = open("advent-2024-02-input-small.txt")
     safe_count=0
     for x in f:
         # print(x)
@@ -145,14 +145,14 @@ def day02part2():
         if (unidirectional and gradual):
             safe_count+=1
         else:
-            print("check sublists")
+            # print("check sublists")
             safe_sublist=False
-            print(my_list)
+            # print(my_list)
             for y in range(len(my_list)):
-                print("index " + str(y) + " is " + my_list[y])
+                # print("index " + str(y) + " is " + my_list[y])
                 sub_list=list(my_list)
                 del sub_list[y]
-                print(sub_list)
+                # print(sub_list)
                 #loop to apply the same logic to each sublist and see if any are safe
                 # TODO: replace this logic with a method call
 
@@ -183,11 +183,10 @@ def day02part2():
                         # print("too high")
 
                 if (sub_unidirectional and sub_gradual):
-                    # print("Safe sublist is " + sub_list)
                     safe_sublist=True
                 #end recreated logic
             if safe_sublist:
-                print("a sublist was safe")
+                # print("a sublist was safe")
                 safe_count+=1
     
     print(safe_count)
