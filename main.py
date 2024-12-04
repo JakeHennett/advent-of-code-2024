@@ -197,8 +197,8 @@ def day02part2():
 
 def day03():
     print("day 3")
-    #f = open("advent-2024-03-input.txt")
-    f = open("advent-2024-03-input-small.txt")
+    f = open("advent-2024-03-input.txt")
+    #f = open("advent-2024-03-input-small.txt")
     mul_list=[]
     for x in f:
         print("x: " + x)
@@ -235,7 +235,10 @@ def day03():
         num_list=numbers_only.split(",")
         print(numbers_only)
         print(num_list)
-        product=int(num_list[0])*int(num_list[1])
+        try:
+            product=int(num_list[0])*int(num_list[1])
+        except:
+            product=0
         print(product)
         mul_sum+=product
     print("Sum of all mul operations: " + str(mul_sum))
