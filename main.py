@@ -12,7 +12,8 @@ def main():
     #day01()
     #day01_part2()
     #day02()
-    day02part2()
+    # day02part2()
+    day03()
 
 def day01():
     print("day 1 - attempt 1")
@@ -190,6 +191,14 @@ def day02part2():
                 safe_count+=1
     
     print(safe_count)
+
+    #close file
+    f.close()
+
+def day03():
+    print("day 3")
+    #f = open("advent-2024-01-input.txt")
+    f = open("advent-2024-03-input-small.txt")
 
     #close file
     f.close()
