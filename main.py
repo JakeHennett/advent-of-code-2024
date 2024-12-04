@@ -17,7 +17,7 @@ def main():
     main_day02()
     main_day02part2()
     main_day03()
-    main_day03part2()
+    day03part2()
 
 if __name__ == "__main__":
     main()
