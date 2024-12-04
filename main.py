@@ -109,8 +109,8 @@ def day02():
 
 def day02part2():
     print("day 2 part 2")
-    f = open("advent-2024-02-input.txt")
-    # f = open("advent-2024-02-input-small.txt")
+    # f = open("advent-2024-02-input.txt")
+    f = open("advent-2024-02-input-small.txt")
     safe_count=0
     for x in f:
         # print(x)
@@ -127,26 +127,32 @@ def day02part2():
             difference.append(abs(second-first))
             # print(direction[y] + " " + str(difference[y]))
 
-        error_count=0
         unidirectional=True
         gradual=True
         if (direction.__contains__("Up") and direction.__contains__("Down")):
             unidirectional=False
-            error_count+=1
             # print("both ways")
         for y in difference:
             # print(y)
             if y<1:
                 gradual=False
-                error_count+=1
                 # print("too low")
             if y>3:
                 gradual=False
-                error_count+=1
                 # print("too high")
         
-        if (error_count<2):
+        if (unidirectional and gradual):
             safe_count+=1
+        else:
+            print("check sublists")
+            safe_sublist=False
+            print(my_list)
+            for y in range(len(my_list)):
+                print("index " + str(y) + " is " + my_list[y])
+                sub_list=list(my_list)
+                del sub_list[y]
+                print(sub_list)
+                #loop to apply the same logic to each sublist and see if any are safe
     
     print(safe_count)
 
