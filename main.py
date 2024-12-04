@@ -10,7 +10,8 @@ import argparse
 def main():
     print("Advent of Code 2024")
     #day01()
-    day01_part2()
+    #day01_part2()
+    day02()
 
 def day01():
     print("day 1 - attempt 1")
@@ -62,6 +63,39 @@ def day01_part2():
         
     print(similarity)
     f.close
+
+def day02():
+    print("day 2")
+    #f = open("advent-2024-02-input.txt")
+    f = open("advent-2024-02-input-small.txt")
+    for x in f:
+        print(x)
+        my_list=x.split()
+        for y in range(len(my_list)-1):
+            print(int(my_list[y]))
+        unidirectional=True
+        gradual=True
+        for y in x:
+            print(y)
+
+    #     one_line = x.split()
+    #     left_list.append(one_line[0])
+    #     right_list.append(one_line[1])
+    
+    # left_list.sort()
+    # right_list.sort()
+
+    # total_difference=0
+    # for x in range(len(left_list)):
+    #     left=int(left_list[x])
+    #     right=int(right_list[x])
+    #     total_difference+=abs(left-right)
+    #     #debug print(total_difference)
+    
+    # print(total_difference)
+
+    #close file
+    f.close()
 
 if __name__ == "__main__":
     main()
