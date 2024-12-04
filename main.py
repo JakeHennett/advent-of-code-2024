@@ -71,12 +71,21 @@ def day02():
     for x in f:
         print(x)
         my_list=x.split()
+        direction = []
+        difference = []
         for y in range(len(my_list)-1):
-            print(int(my_list[y]))
+            first = int(my_list[y])
+            second = int(my_list[y+1])
+            if (first < second):
+                direction.append("Up")
+            else:
+                direction.append("Down")
+            difference.append(abs(second-first))
+            print(direction[y] + " " + str(difference[y]))
         unidirectional=True
         gradual=True
-        for y in x:
-            print(y)
+        # for y in x:
+            # print(y)
 
     #     one_line = x.split()
     #     left_list.append(one_line[0])
