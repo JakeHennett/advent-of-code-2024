@@ -66,11 +66,11 @@ def day01_part2():
 
 def day02():
     print("day 2")
-    #f = open("advent-2024-02-input.txt")
-    f = open("advent-2024-02-input-small.txt")
+    f = open("advent-2024-02-input.txt")
+    # f = open("advent-2024-02-input-small.txt")
     safe_count=0
     for x in f:
-        print(x)
+        # print(x)
         my_list=x.split()
         direction = []
         difference = []
@@ -82,27 +82,27 @@ def day02():
             else:
                 direction.append("Down")
             difference.append(abs(second-first))
-            print(direction[y] + " " + str(difference[y]))
+            # print(direction[y] + " " + str(difference[y]))
 
         unidirectional=True
         gradual=True
         if (direction.__contains__("Up") and direction.__contains__("Down")):
             unidirectional=False
-            print("both ways")
+            # print("both ways")
         for y in difference:
-            print(y)
+            # print(y)
             if y<1:
                 gradual=False
-                print("too low")
+                # print("too low")
             if y>3:
                 gradual=False
-                print("too high")
+                # print("too high")
         
         if (unidirectional and gradual):
             safe_count+=1
     
     print(safe_count)
-    
+
     #close file
     f.close()
 
