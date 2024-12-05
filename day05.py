@@ -12,7 +12,37 @@ def day05part1():
     for x in input_file:
         input_list.append(x)
     print(input_list)
-        
+    
+    sorted_list=input_list
+    for page in sorted_list:
+        print("Checking page containing rules: " + page)
+        page = page.split(',')
+        page_sorted=False
+        while (not page_sorted):
+            #TODO: Change this check to a valid check once we know what to look for
+            if (page_sorted):
+                print("Page is sorted!")
+                page_sorted=True
+            else:
+                print("We must sort the page.")
+                for rule in rules_list:
+                    #break rule into two numbers
+                    rule = rule.split("|")
+                    rule[1] = rule[1][0:2]
+                    #print(rule)
+                    #check if both rules are in the current page
+                    try:
+                        first_rule_index=page.index(rule[0])
+                        second_rule_index=page.index(rule[1])
+                    except:
+                        first_rule_index=-1
+                        second_rule_index=-1
+                        print("Page does not contain both rule items")
+                    print("Rule items found at indices: " + str(first_rule_index) + " and " + str(second_rule_index))
+            #Check if page already matches rules
+            #iterate over rules list once and edit as necessary
+            page_sorted=True #TODO: remove this hard coded assertion once logic works
+
 
     middle_average=0
     input_file.close
