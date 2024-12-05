@@ -1,4 +1,8 @@
-#import numpy as np
+import sys
+# sys.path.append('C:\\Users\\jakeh\\AppData\\Local\\Programs\\Python\\Python313\\Scripts')
+#sys.path.append('C:\\Users\\jakeh\\AppData\\Local\\Programs\\Python\\*')
+#import NumPy
+#print(np.__version__)
 
 def day04part1():
     print("day 4, part 1")
