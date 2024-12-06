@@ -3,7 +3,8 @@ import numpy as np
 
 def day06part1():
     print("day 6, part 1")
-    file_name = "advent-2024-06-input-small.txt"
+    #file_name = "advent-2024-06-input-small.txt"
+    file_name = "advent-2024-06-input.txt"
     map_file = open(file_name)
     string_array=[]
     #iterate over file to find line count and line length
@@ -12,8 +13,8 @@ def day06part1():
     map_file.close
 
     map_array = np.array(list(map(list, string_array)))
-    print(map_array)
-    print(map_array.shape)
+    #print(map_array)
+    #print(map_array.shape)
 
     #find guard and create object
     guard_x = 0
@@ -27,43 +28,33 @@ def day06part1():
                 guard_y=x
             elif (map_array[x][y]=='#'):
                 obstacle_list.append(Obstacle(y,x))
-                print(obstacle_list[len(obstacle_list) - 1].display())
+                #print(obstacle_list[len(obstacle_list) - 1].display())
     guard1 = Guard(guard_x, guard_y, 'N')
-    print(guard1.display())
-    #guard1.walk()
-    #print(guard1.display())
-    #guard1.turn()
-    #print(guard1.display())
-    #guard1.walk()
     #print(guard1.display())
 
     guard_path = map_array
 
     debug_count = 0
     while (guard1.x < map_array.shape[1] and guard1.x >= 0 and guard1.y < map_array.shape[0] and guard1.y >= 0):
-        print(guard1.display())
+        #print(guard1.display())
         guard_path[guard1.y][guard1.x]='X'
         hypothetical_guard=guard1.next_step()
-        #print(hypothetical_guard)
         next_step=Obstacle(hypothetical_guard.x, hypothetical_guard.y)
-        #next_step=Obstacle(1,1)
         collision=False
         for obstacle in obstacle_list:
             #print("Looking for collision at " + obstacle.display())
             if (next_step.x == obstacle.x and next_step.y == obstacle.y):
                 collision=True
         if(collision):
-            print("Collision. Guard is turning.")
+            #print("Collision. Guard is turning.")
             guard1.turn()
         else:
-            print("Guard is walking.")
+            #print("Guard is walking.")
             guard1.walk()
         #mark path on map
         debug_count+=1
-    print("Guard has left the area.")
-    print(guard_path)
-
-    #print(np.char.find(guard_path,'X'))
+    #print("Guard has left the area.")
+    #print(guard_path)
     
     step_count=0
     for x in range(map_array.shape[0]):
