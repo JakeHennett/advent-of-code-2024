@@ -3,8 +3,8 @@ import numpy as np
 
 def day06part1():
     print("day 6, part 1")
-    file_name = "advent-2024-06-input-small.txt"
-    #file_name = "advent-2024-06-input.txt"
+    #file_name = "advent-2024-06-input-small.txt"
+    file_name = "advent-2024-06-input.txt"
     map_file = open(file_name)
     string_array=[]
     #iterate over file to find line count and line length
@@ -91,7 +91,7 @@ def findLoops(array):
         for y in range(array.shape[1]):
             debug_count = 0
             new_obstacle= Obstacle(y,x)
-            print("Trying new obstacle at: " + new_obstacle.display())
+            #print("Trying new obstacle at: " + new_obstacle.display())
             obstacle_list.append(new_obstacle)
 
             #print(str(guard_x) + "," + str(guard_y))
@@ -123,8 +123,6 @@ def findLoops(array):
             if(debug_count>=10000):
                 infinite_loop_count+=1
                 print("Infinite loop count: " + str(infinite_loop_count))
-            else:
-                print("Steps to find solution: " + str(debug_count))
     return infinite_loop_count
 
 class Obstacle:
