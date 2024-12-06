@@ -40,8 +40,9 @@ def day06part1():
     guard_path = map_array
 
     debug_count = 0
-    while (guard1.x < map_array.shape[1] and guard1.x >= 0 and guard1.y < map_array.shape[0] and guard1.y >= 0 and debug_count<10):
+    while (guard1.x < map_array.shape[1] and guard1.x >= 0 and guard1.y < map_array.shape[0] and guard1.y >= 0):
         print(guard1.display())
+        guard_path[guard1.y][guard1.x]='X'
         hypothetical_guard=guard1.next_step()
         #print(hypothetical_guard)
         next_step=Obstacle(hypothetical_guard.x, hypothetical_guard.y)
@@ -60,6 +61,16 @@ def day06part1():
         #mark path on map
         debug_count+=1
     print("Guard has left the area.")
+    print(guard_path)
+
+    #print(np.char.find(guard_path,'X'))
+    
+    step_count=0
+    for x in range(map_array.shape[0]):
+        for y in range(map_array.shape[1]):
+            if (map_array[x][y]=='X'):
+                step_count+=1
+    print("Guard has walked " + str(step_count) + " steps.")
 
 class Obstacle:
     def __init__(self, x, y):
