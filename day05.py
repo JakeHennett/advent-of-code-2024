@@ -3,8 +3,10 @@ import math
 def day05part1():
     print("day 5, part 1")
     # f = open("advent-2024-05-input.txt")
-    input_file = open("advent-2024-05-input-small.txt")
-    rules_file = open("advent-2024-05-rules-small.txt")
+    #input_file = open("advent-2024-05-input-small.txt")
+    #rules_file = open("advent-2024-05-rules-small.txt")
+    input_file = open("advent-2024-05-input.txt")
+    rules_file = open("advent-2024-05-rules.txt")
     rules_list=[]
     for x in rules_file:
         rules_list.append(x)
@@ -67,6 +69,7 @@ def day05part1():
     input_file.close
     rules_file.close
     print("Middle average: " + str(middle_average))
+    #10058 is too high
 
 def day05part2():
     print("day 5, part 2")
