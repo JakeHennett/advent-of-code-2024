@@ -13,26 +13,59 @@ def day06part1():
 
     map_array = np.array(list(map(list, string_array)))
     print(map_array)
+    print(map_array.shape)
 
     #find guard and create object
     guard_x = 0
     guard_y = 0
+    obstacle_list = []
     #TODO: check these axes
     for x in range(map_array.shape[0]):
         for y in range(map_array.shape[1]):
             if (map_array[x][y]=='^'):
                 guard_x=y
                 guard_y=x
+            elif (map_array[x][y]=='#'):
+                obstacle_list.append(Obstacle(y,x))
+                print(obstacle_list[len(obstacle_list) - 1].display())
     guard1 = Guard(guard_x, guard_y, 'N')
     print(guard1.display())
-    guard1.walk()
-    print(guard1.display())
-    guard1.turn()
-    print(guard1.display())
-    guard1.walk()
-    print(guard1.display())
+    #guard1.walk()
+    #print(guard1.display())
+    #guard1.turn()
+    #print(guard1.display())
+    #guard1.walk()
+    #print(guard1.display())
 
     guard_path = map_array
+
+    debug_count = 0
+    while (guard1.x < map_array.shape[1] and guard1.y < map_array.shape[0] and debug_count<10):
+        print(guard1.display())
+        hypothetical_guard=guard1.next_step()
+        print(hypothetical_guard)
+        #next_step=Obstacle(hypothetical_guard.x, hypothetical_guard.y)
+        next_step=Obstacle(1,1)
+        collision=False
+        for obstacle in obstacle_list:
+            if (next_step.x == obstacle.x and next_step.y == obstacle.y):
+                collision=True
+        if(collision):
+            print("Collision. Guard is turning.")
+            guard1.turn()
+        else:
+            print("Guard is walking.")
+            guard1.walk()
+        #mark path on map
+        debug_count+=1
+
+class Obstacle:
+    def __init__(self, x, y):
+        self.x = x
+        self.y = y
+
+    def display(self):
+        return "(" + str(self.x) + "," + str(self.y) + ")"
 
 class Guard:
     def __init__(self, x, y, direction):
@@ -65,6 +98,11 @@ class Guard:
             #reset unknown position to out of bounds
             self.x=-1
             self.y=-1
+    
+    def next_step(self):
+        hypothetical_guard = Guard(self.x, self.y, self.direction)
+        hypothetical_guard.walk()
+        return hypothetical_guard.display()
     
     def display(self):
         status = "Guard is at (" + str(self.x) + ", " + str(self.y) + "), facing " + self.direction
