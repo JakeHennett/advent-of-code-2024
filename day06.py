@@ -40,14 +40,15 @@ def day06part1():
     guard_path = map_array
 
     debug_count = 0
-    while (guard1.x < map_array.shape[1] and guard1.y < map_array.shape[0] and debug_count<10):
+    while (guard1.x < map_array.shape[1] and guard1.x >= 0 and guard1.y < map_array.shape[0] and guard1.y >= 0 and debug_count<10):
         print(guard1.display())
         hypothetical_guard=guard1.next_step()
-        print(hypothetical_guard)
-        #next_step=Obstacle(hypothetical_guard.x, hypothetical_guard.y)
-        next_step=Obstacle(1,1)
+        #print(hypothetical_guard)
+        next_step=Obstacle(hypothetical_guard.x, hypothetical_guard.y)
+        #next_step=Obstacle(1,1)
         collision=False
         for obstacle in obstacle_list:
+            #print("Looking for collision at " + obstacle.display())
             if (next_step.x == obstacle.x and next_step.y == obstacle.y):
                 collision=True
         if(collision):
@@ -58,6 +59,7 @@ def day06part1():
             guard1.walk()
         #mark path on map
         debug_count+=1
+    print("Guard has left the area.")
 
 class Obstacle:
     def __init__(self, x, y):
@@ -102,8 +104,8 @@ class Guard:
     def next_step(self):
         hypothetical_guard = Guard(self.x, self.y, self.direction)
         hypothetical_guard.walk()
-        return hypothetical_guard.display()
-    
+        return hypothetical_guard
+        
     def display(self):
         status = "Guard is at (" + str(self.x) + ", " + str(self.y) + "), facing " + self.direction
         return status
