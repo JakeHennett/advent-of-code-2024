@@ -1,3 +1,5 @@
+import math
+
 def day05part1():
     print("day 5, part 1")
     # f = open("advent-2024-05-input.txt")
@@ -14,9 +16,11 @@ def day05part1():
     print(input_list)
     
     sorted_list=input_list
+    middle_average=0
     for page in sorted_list:
         print("Checking page containing rules: " + page)
         page = page.split(',')
+        page[len(page)-1]=page[len(page)-1][0:2] #remove newline character from last element
         page_sorted=False
         while (not page_sorted):
             #TODO: Change this check to a valid check once we know what to look for
@@ -25,6 +29,7 @@ def day05part1():
                 page_sorted=True
             else:
                 print("We must sort the page.")
+                page_sorted=True #assuming page is sorted properly unless we find otherwise
                 for rule in rules_list:
                     #break rule into two numbers
                     rule = rule.split("|")
@@ -41,6 +46,7 @@ def day05part1():
                     
                     #check if indices are in the correct order
                     if (first_rule_index > second_rule_index):
+                        page_sorted=False #at least one rule was not followed
                         print("Reordering items at " + str(first_rule_index) + " and " + str(second_rule_index) + " because " + page[first_rule_index] + " must come before " + page[second_rule_index])
                         #l.insert(newindex, l.pop(oldindex))
                         print(page)
@@ -50,10 +56,14 @@ def day05part1():
                     #print("Rule items found at indices: " + str(first_rule_index) + " and " + str(second_rule_index))
             #Check if page already matches rules
             #iterate over rules list once and edit as necessary
-            page_sorted=True #TODO: remove this hard coded assertion once logic works
+            #page_sorted=True #TODO: remove this hard coded assertion once logic works
+        print("While loop is finished. Page must be sorted now.")
+        print(page)
+        middle_element = int(page[math.floor(len(page)/2)])
+        print(middle_element)
+        middle_average+=middle_element
 
 
-    middle_average=0
     input_file.close
     rules_file.close
     print("Middle average: " + str(middle_average))
