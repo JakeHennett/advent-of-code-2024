@@ -18,8 +18,9 @@ def day05part1():
     #print(input_list)
     
     sorted_list=input_list
-    middle_average=0
+    total_middle_sum=0
     correct_middle_sum=0
+    incorrect_middle_sum=0
     for page in sorted_list:
         #print("Checking page containing rules: " + page)
         page = page.split(',')
@@ -61,36 +62,24 @@ def day05part1():
             loop_count+=1
         #print("While loop is finished. Page must be sorted now.")
         #print(page)
-        if(loop_count == 1): #correct ordering on the first pass
-            correct_middle_sum+=int(page[math.floor(len(page)/2)])
         middle_element = int(page[math.floor(len(page)/2)])
+        if(loop_count == 1): #correct ordering on the first pass
+            correct_middle_sum+=middle_element
+        else:
+            incorrect_middle_sum+=middle_element
         #print("page length is " + str(len(page)) + " so middle index is " + str(math.floor(len(page)/2)) + " which has a value of...")
         #print(middle_element)
-        middle_average+=middle_element
+        total_middle_sum+=middle_element
 
 
     input_file.close
     rules_file.close
-    print("Middle average: " + str(middle_average))
-    print("Correct middle sum: " + str(correct_middle_sum))
+    print("Total middle sum: " + str(total_middle_sum))
+    print("Correct middle sum (part 1 solution): " + str(correct_middle_sum))
+    print("Incorrect middle sum (part 2 solution): " + str(incorrect_middle_sum))
     #10058 is too high
     #9362 too high
     #5087 is just right
 
-def day05part2():
-    print("day 5, part 2")
-    # f = open("advent-2024-05-input.txt")
-    input_file = open("advent-2024-05-input-small.txt")
-    rules_file = open("advent-2024-05-rules-small.txt")
-    rules_list=[]
-    for x in rules_file:
-        rules_list.append(x)
-
-    middle_average=0
-    input_file.close
-    rules_file.close
-    print("Middle average: " + str(middle_average))
-
 if __name__ == "__main__":
     day05part1()
-    day05part2()
