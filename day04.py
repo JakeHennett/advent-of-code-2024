@@ -31,20 +31,96 @@ def day04part1():
     print("XMAS count: " + str(xmas_count))
 
 def checkSpot(x, y, xmas_list):
+    print(str(x) + ", " + str(y))
     word_count=0
     #check N
     try:
-        print("n")
-        word_count+=1
+        if (xmas_list[x][y+1] == 'M'):
+            print("Second letter M")
+            if (xmas_list[x][y+2] == 'A'):
+                print("Third letter A")
+                if (xmas_list[x][y+3] == 'S'):
+                    print("Fourth letter S")
+                    word_count+=1
     except:
         word_count+=0
     #check NE
+    try:
+        if (xmas_list[x+1][y+1] == 'M'):
+            print("Second letter M")
+            if (xmas_list[x+2][y+2] == 'A'):
+                print("Third letter A")
+                if (xmas_list[x+3][y+3] == 'S'):
+                    print("Fourth letter S")
+                    word_count+=1
+    except:
+        word_count+=0
     #check E
+    try:
+        if (xmas_list[x+1][y] == 'M'):
+            print("Second letter M")
+            if (xmas_list[x+2][y] == 'A'):
+                print("Third letter A")
+                if (xmas_list[x+3][y] == 'S'):
+                    print("Fourth letter S")
+                    word_count+=1
+    except:
+        word_count+=0
     #check SE
+    try:
+        if (xmas_list[x-1][y+1] == 'M'):
+            print("Second letter M")
+            if (xmas_list[x-2][y+2] == 'A'):
+                print("Third letter A")
+                if (xmas_list[x-3][y+3] == 'S'):
+                    print("Fourth letter S")
+                    word_count+=1
+    except:
+        word_count+=0
     #check S
+    try:
+        if (xmas_list[x-1][y] == 'M'):
+            print("Second letter M")
+            if (xmas_list[x-2][y] == 'A'):
+                print("Third letter A")
+                if (xmas_list[x-3][y] == 'S'):
+                    print("Fourth letter S")
+                    word_count+=1
+    except:
+        word_count+=0
     #check SW
+    try:
+        if (xmas_list[x-1][y-1] == 'M'):
+            print("Second letter M")
+            if (xmas_list[x-2][y-2] == 'A'):
+                print("Third letter A")
+                if (xmas_list[x-3][y-3] == 'S'):
+                    print("Fourth letter S")
+                    word_count+=1
+    except:
+        word_count+=0
     #check W
+    try:
+        if (xmas_list[x-1][y] == 'M'):
+            print("Second letter M")
+            if (xmas_list[x-2][y] == 'A'):
+                print("Third letter A")
+                if (xmas_list[x-3][y] == 'S'):
+                    print("Fourth letter S")
+                    word_count+=1
+    except:
+        word_count+=0
     #check NW
+    try:
+        if (xmas_list[x-1][y+1] == 'M'):
+            print("Second letter M")
+            if (xmas_list[x-2][y+2] == 'A'):
+                print("Third letter A")
+                if (xmas_list[x-3][y+3] == 'S'):
+                    print("Fourth letter S")
+                    word_count+=1
+    except:
+        word_count+=0
     return word_count
 
 def day04part2():
