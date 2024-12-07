@@ -32,6 +32,19 @@ def day04part1():
 
 def checkSpot(x, y, xmas_list):
     word_count=0
+    #check N
+    try:
+        print("n")
+        word_count+=1
+    except:
+        word_count+=0
+    #check NE
+    #check E
+    #check SE
+    #check S
+    #check SW
+    #check W
+    #check NW
     return word_count
 
 def day04part2():
