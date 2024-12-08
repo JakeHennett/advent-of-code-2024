@@ -24,7 +24,7 @@ def day04part1():
     for x in range(xmas_list.shape[0]):
         for y in range(xmas_list.shape[1]):
             if (xmas_list[x][y]=='X'):
-                print(str(x) + "," + str(y))
+                print("X found at " + str(x) + "," + str(y))
                 local_count=checkSpot(x, y, xmas_list)
                 xmas_count+=local_count
 
@@ -39,7 +39,7 @@ def checkSpot(x, y, xmas_list):
             # print("Second letter M")
             if (xmas_list[x][y+2] == 'A'):
                 # print("Third letter A")
-                if (xmas_list[x][y+3] == 'S' and x >= 0 and (y+3)>=0):
+                if (xmas_list[x][y+3] == 'S' and x >= 0 and (y+3) < xmas_list.shape[1]):
                     # print("Fourth letter S")
                     print("XMAS found starting at " + str(x) + "," + str(y) + " N, with S located at " + str(x) + "," + str(y+3))
                     word_count+=1
@@ -51,7 +51,7 @@ def checkSpot(x, y, xmas_list):
             # print("Second letter M")
             if (xmas_list[x+2][y+2] == 'A'):
                 # print("Third letter A")
-                if (xmas_list[x+3][y+3] == 'S' and (x+3) >= 0 and (y+3) >= 0):
+                if (xmas_list[x+3][y+3] == 'S' and (x+3) < xmas_list.shape[0] and (y+3) < xmas_list.shape[1]):
                     # print("Fourth letter S")
                     print("XMAS found starting at " + str(x) + "," + str(y) + " NE")
                     word_count+=1
@@ -63,7 +63,7 @@ def checkSpot(x, y, xmas_list):
             # print("Second letter M")
             if (xmas_list[x+2][y] == 'A'):
                 # print("Third letter A")
-                if (xmas_list[x+3][y] == 'S'):
+                if (xmas_list[x+3][y] == 'S' and (x+3) < xmas_list.shape[0]):
                     # print("Fourth letter S")
                     print("XMAS found starting at " + str(x) + "," + str(y) + " E")
                     word_count+=1
@@ -71,11 +71,11 @@ def checkSpot(x, y, xmas_list):
         word_count+=0
     #check SE
     try:
-        if (xmas_list[x-1][y+1] == 'M'):
+        if (xmas_list[x+1][y-1] == 'M'):
             # print("Second letter M")
-            if (xmas_list[x-2][y+2] == 'A'):
+            if (xmas_list[x+2][y-2] == 'A'):
                 # print("Third letter A")
-                if (xmas_list[x-3][y+3] == 'S' and (x-3) >= 0):
+                if (xmas_list[x+3][y-3] == 'S' and (x+3) < xmas_list.shape[0] and (y-3) >= 0):
                     # print("Fourth letter S")
                     print("XMAS found starting at " + str(x) + "," + str(y) + " SE, with S located at " + str(x-3) + "," + str(y+3))
                     word_count+=1
@@ -83,11 +83,11 @@ def checkSpot(x, y, xmas_list):
         word_count+=0
     #check S
     try:
-        if (xmas_list[x-1][y] == 'M'):
+        if (xmas_list[x][y-1] == 'M'):
             # print("Second letter M")
-            if (xmas_list[x-2][y] == 'A'):
+            if (xmas_list[x][y-2] == 'A'):
                 # print("Third letter A")
-                if (xmas_list[x-3][y] == 'S' and (x-3) >= 0):
+                if (xmas_list[x][y-3] == 'S' and (y-3) >= 0):
                     # print("Fourth letter S")
                     print("XMAS found starting at " + str(x) + "," + str(y) + " S")
                     word_count+=1
@@ -123,7 +123,7 @@ def checkSpot(x, y, xmas_list):
             # print("Second letter M")
             if (xmas_list[x-2][y+2] == 'A'):
                 # print("Third letter A")
-                if (xmas_list[x-3][y+3] == 'S' and (x-3) >= 0):
+                if (xmas_list[x-3][y+3] == 'S' and (x-3) >= 0 and (y+3) < xmas_list.shape[1]):
                     # print("Fourth letter S")
                     print("XMAS found starting at " + str(x) + "," + str(y) + " NW, with S located at " + str(x-3) + "," + str(y+3))
                     word_count+=1
