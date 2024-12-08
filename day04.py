@@ -8,8 +8,8 @@ import numpy as np
 def day04part1():
     print("day 4, part 1")
     xmas_count=0
-    file_name = "advent-2024-04-input-small.txt"
-    #file_name = "advent-2024-04-input.txt"
+    # file_name = "advent-2024-04-input-small.txt"
+    file_name = "advent-2024-04-input.txt"
     xmas_list_file = open(file_name)
     string_array=[]
     #iterate over file to find line count and line length
