@@ -53,9 +53,20 @@ def day09part1():
         sorted_id_array[reverse_id_iterator]='.'
         print("After sorting, array looks like this:")
         print(sorted_id_array)
-        if(first_blank > reverse_id_iterator):
+        if((first_blank+1) >= (reverse_id_iterator-1)):
             is_sorted=True
     # reversed_id_string=id_string.__reversed__()
+    print(sorted_id_array)
+
+    #find checksum
+    array_iter=0
+    for x in sorted_id_array:
+        try:
+            individual_sum=(int(x) * array_iter)
+        except:
+            individual_sum=0
+        array_iter+=1
+        checksum+=individual_sum
     print(checksum)
 
 if __name__ == "__main__":
