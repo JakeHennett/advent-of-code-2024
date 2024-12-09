@@ -51,9 +51,11 @@ def day09part1():
         print(x.display())
     print(gaps)
 
-    # sorted_id_array=list(map(list, id_string))
+
+    print(defrag(data, gaps))
+    print(simpleDefrag(id_array, gaps))
+
     sorted_id_array=id_array
-    # print(sorted_id_array)
     is_sorted=False
     # reverse_id_iterator=int(id_string.__len__())
     reverse_id_iterator=int(sorted_id_array.__len__())
@@ -82,9 +84,8 @@ def day09part1():
         # if((first_blank+1) >= (reverse_id_iterator-1)):
         #     is_sorted=True
     # print(sorted_id_array)
-    print(sorted_id_array)
-    print(''.join(sorted_id_array))
-
+    # print(sorted_id_array)
+    # print(''.join(sorted_id_array))
 
     #find checksum
     array_iter=0
@@ -99,6 +100,43 @@ def day09part1():
     #89403351457 too low
     #89403351449 too low
     #6258319840548
+
+def defrag(data, gaps):
+    print("Defragmenting drive...")
+    defrag_checksum=0
+    sorted_defrag=data
+    reduced_gaps=gaps
+    new_combined_array=[data[0].length]
+    for x in data:
+        # print(x.display())
+        for y in gaps:
+            # print(y)
+            if(x.length <= y):
+                # print("gap is large enough for file")
+                new_combined_array.append(x)
+    # print(new_combined_array)
+
+    return defrag_checksum
+
+def simpleDefrag(id_array, gaps):
+    print("Defragmenting drive...")
+    print(id_array)
+    defrag_checksum=0
+    gap_index=0
+    unique_id_count=int(id_array.__getitem__(id_array.__len__()-1))
+    print(unique_id_count)
+    for i in range(unique_id_count, 0, -1):
+        print(i)
+        file_size=id_array.count(str(i))
+        print(file_size)
+        gap_index=0
+        for j in range(unique_id_count):
+            gap_start=id_array.index('.', gap_index)
+            gap_size=int(gaps[j])
+            print("Gap starts at " + str(gap_start) + " for a length of " + str(gap_size))
+            gap_index= gap_index + gap_size
+
+    return defrag_checksum
 
 class DataFile:
     def __init__(self, id, length):
