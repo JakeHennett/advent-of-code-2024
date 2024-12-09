@@ -13,6 +13,7 @@ def day09part1():
     # print(string)
     # print(input_array)
     id_string = ""
+    id_array = []
     for x in range(len(input_array)):
         item_size=-1
         try:
@@ -21,15 +22,22 @@ def day09part1():
             item_size=0
         
         file_item=""
+        # file_item_array=[]
         for y in range(item_size):
             if (x % 2 == 0):
                 file_id = int(np.floor(x / 2))
                 file_item+=str(file_id)
+                # file_item_array.append(file_id)
+                id_array.append(file_id)
             else:
                 file_item+='.'
+                # file_item_array.append('.')
+                id_array.append('.')
         id_string+=file_item
+        # id_array.append
     # print(id_string)
     #00...111...2...333.44.5555.6666.777.888899
+    print(id_array)
 
     # sorted_id_array=list(map(list, id_string))
     sorted_id_array=list(id_string)
@@ -62,6 +70,7 @@ def day09part1():
         # if((first_blank+1) >= (reverse_id_iterator-1)):
         #     is_sorted=True
     # print(sorted_id_array)
+    print(sorted_id_array)
     print(''.join(sorted_id_array))
 
 
