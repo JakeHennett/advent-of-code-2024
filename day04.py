@@ -9,8 +9,8 @@ def day04part1():
     print("day 4, part 1")
     xmas_count=0
     x_mas_count=0
-    file_name = "advent-2024-04-input-small.txt"
-    #file_name = "advent-2024-04-input.txt"
+    #file_name = "advent-2024-04-input-small.txt"
+    file_name = "advent-2024-04-input.txt"
     xmas_list_file = open(file_name)
     string_array=[]
     #iterate over file to find line count and line length
@@ -139,6 +139,10 @@ def checkXmasLine(x, y, xmas_list):
     return word_count
 
 def checkXMas(x, y, xmas_list):
+    #1861 too high. check edge and corner cases
+    if ((x-1) < 0 or (y-1) < 0 or (x+1) >= xmas_list.shape[0] or (y+1) >= xmas_list.shape[1]):
+        print("Item out of bounds.")
+        return 0
     try:
         forward_slash_diagonal=[]
         back_slash_diagnoal=[]
