@@ -3,9 +3,9 @@ import numpy as np
 
 def day09part1():
     print("day 09, part 1")
-    # file_name = "advent-2024-09-input-small.txt"
+    file_name = "advent-2024-09-input-small.txt"
     # file_name = "advent-2024-09-input.txt"
-    file_name = "advent-2024-09-input-reddit.txt"
+    # file_name = "advent-2024-09-input-reddit.txt"
     f = open(file_name)
     checksum=0
     string = f.read()
@@ -14,12 +14,20 @@ def day09part1():
     # print(input_array)
     id_string = ""
     id_array = []
+    data = []
+    gaps = []
     for x in range(len(input_array)):
         item_size=-1
         try:
             item_size=int(input_array.__getitem__(x))
         except:
             item_size=0
+        
+        if (x % 2 == 0):
+            one_file = DataFile(int(np.floor(x/2)),input_array.__getitem__(x))
+            data.append(one_file)
+        else:
+            gaps.append(input_array.__getitem__(x))
         
         file_item=""
         # file_item_array=[]
@@ -28,7 +36,7 @@ def day09part1():
                 file_id = int(np.floor(x / 2))
                 file_item+=str(file_id)
                 # file_item_array.append(file_id)
-                id_array.append(file_id)
+                id_array.append(str(file_id))
             else:
                 file_item+='.'
                 # file_item_array.append('.')
@@ -38,9 +46,13 @@ def day09part1():
     # print(id_string)
     #00...111...2...333.44.5555.6666.777.888899
     print(id_array)
+    # print(data)
+    for x in data:
+        print(x.display())
+    print(gaps)
 
     # sorted_id_array=list(map(list, id_string))
-    sorted_id_array=list(id_string)
+    sorted_id_array=id_array
     # print(sorted_id_array)
     is_sorted=False
     # reverse_id_iterator=int(id_string.__len__())
@@ -86,6 +98,15 @@ def day09part1():
     print(checksum)
     #89403351457 too low
     #89403351449 too low
+    #6258319840548
+
+class DataFile:
+    def __init__(self, id, length):
+        self.id = id
+        self.length = length
+
+    def display(self):
+        return "(" + str(self.id) + "," + str(self.length) + ")"
 
 if __name__ == "__main__":
     day09part1()
