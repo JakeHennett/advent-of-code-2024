@@ -8,8 +8,9 @@ import numpy as np
 def day04part1():
     print("day 4, part 1")
     xmas_count=0
-    # file_name = "advent-2024-04-input-small.txt"
-    file_name = "advent-2024-04-input.txt"
+    x_mas_count=0
+    file_name = "advent-2024-04-input-small.txt"
+    #file_name = "advent-2024-04-input.txt"
     xmas_list_file = open(file_name)
     string_array=[]
     #iterate over file to find line count and line length
@@ -25,12 +26,17 @@ def day04part1():
         for y in range(xmas_list.shape[1]):
             if (xmas_list[x][y]=='X'):
                 print("X found at " + str(x) + "," + str(y))
-                local_count=checkSpot(x, y, xmas_list)
+                local_count=checkXmasLine(x, y, xmas_list)
                 xmas_count+=local_count
+            elif (xmas_list[x][y]=='A'):
+                print("A found at " + str(x) + "," + str(y))
+                local_count=checkXMas(x, y, xmas_list)
+                x_mas_count+=local_count
 
     print("XMAS count: " + str(xmas_count))
+    print("X-MAS count: " + str(x_mas_count))
 
-def checkSpot(x, y, xmas_list):
+def checkXmasLine(x, y, xmas_list):
     print(str(x) + "," + str(y))
     word_count=0
     #check N
@@ -131,6 +137,25 @@ def checkSpot(x, y, xmas_list):
         word_count+=0
     print("Found " + str(word_count) + " instances of XMAS starting at " + str(x) + ", " + str(y))
     return word_count
+
+def checkXMas(x, y, xmas_list):
+    try:
+        forward_slash_diagonal=[]
+        back_slash_diagnoal=[]
+        forward_slash_diagonal.append(xmas_list[x-1][y-1])
+        forward_slash_diagonal.append(xmas_list[x+1][y+1])
+        if(forward_slash_diagonal.index('M') > -1 and forward_slash_diagonal.index('S') > -1):
+            forward_slash_mas=True
+        back_slash_diagnoal.append(xmas_list[x-1][y+1])
+        back_slash_diagnoal.append(xmas_list[x+1][y-1])
+        if(back_slash_diagnoal.index('M') > -1 and back_slash_diagnoal.index('S') > -1):
+            back_slash_mas=True
+        if(back_slash_mas and forward_slash_mas):
+            return 1
+        else:
+            return 0
+    except:
+        return 0
 
 def day04part2():
     print("day 4, part 2")
